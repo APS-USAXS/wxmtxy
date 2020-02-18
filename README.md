@@ -20,4 +20,4 @@ component such as a button or a label) will cause a terse description
 of that widget to be displayed. Moving the mouse away will cause that 
 tooltip to disappear. 
 
-For more help, explanations are provided in the HTML pages.
+For more help, explanations are provided in the [HTML](https://htmlpreview.github.io/?https://github.com/APS-USAXS/wxmtxy/blob/master/index.html) pages.
