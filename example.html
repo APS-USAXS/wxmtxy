@@ -1,0 +1,296 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+	########### SVN repository information ###################
+	# $Date: 2010-06-03 16:04:15 -0500 (Thu, 03 Jun 2010) $
+	# $Author: jemian $
+	# $Revision: 184 $
+	# $URL: https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/example.html $
+	# $Id: example.html 184 2010-06-03 21:04:15Z jemian $
+	########### SVN repository information ###################
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>wxmtxy: an example</title>
+	</head>
+	<body bgcolor="#f0f0f8">
+
+		<!-- begin common header -->
+		<table>
+			<tbody>
+				<tr>
+					<td valign="top"><h1>wxmtxy</h1>
+						<h2>an example</h2>
+						<br/><b>author: Pete R. Jemian (jemian@anl.gov)</b>
+						<br/><b>version: 0.4</b>
+					</td>
+					<td valign="top"><img 
+					src="graphics/logo.png" alt="wxmtxy logo"/></td>
+				</tr>
+			</tbody>
+		</table> 
+		<!-- end common header -->
+		
+		One way to learn how to use 
+		<a href="index.html">wxmtxy</a> is to work through an example.  
+		This example shows how to start 
+		wxmtxy, configure it for two EPICS motors, set some positions, and
+		save the configuration into a file.	
+		
+		<ol>
+			<li>
+				First, start the program.  From the Linux/Solaris command line, type:
+				<pre>/APSshare/bin/python ~/bin/wxmtxy/wxmtxy.py &amp;</pre>
+				
+				<p>The wxmtxy window should appear.</p>
+				
+				<p>
+				<a href="graphics/fig1.png">
+				<img src="graphics/fig1.png" alt="Figure 1"/></a>
+				</p>  
+			</li>
+			
+			<li>
+				Next, connect to two EPICS motor Process Variables, namely:
+				<tt>32idbLAX:m58:c1:m1</tt> and <tt>32idbLAX:m58:c1:m2</tt>.
+				Mouse to the <em>Page</em> menu and select the item
+				<em>EPICS configuration</em>.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig2.png"><img 
+				src="graphics/fig2.png" alt="Figure 2"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				A new window will appear where the PV names can be entered.  
+				Enter <tt>32idbLAX:m58:c1:m1</tt> into the <tt>VAL</tt> field of the X axis
+				and <tt>32idbLAX:m58:c1:m2</tt> into the <tt>VAL</tt> field of the Y axis.
+				Click the two checkboxes for <em>X axis is motor</em> and  <em>Y axis is motor</em>.
+				
+				<br/>If you make a mistake in typing,
+				or press the enter key in the wrong place, you can <em>Revert</em> any 
+				changes back to the default values or <em>Clear X</em> or <em>Clear Y</em>
+				to clear all PV names and checkboxes from either of the two axes.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig3.png"><img 
+				src="graphics/fig3.png" alt="Figure 3"/></a>
+				</p>
+
+				<!-- Perhaps this note can be moved to Theory of Operation section? -->
+				<p>Note:  The <em>EPICS configuration</em> window will change the background
+				color on each PV field, depending on whether or not the given PV name has been
+				identified on the local EPICS network.  Pink indicates that the PV name has not
+				been found yet, green indicates that the PV name has been found.  By pressing the 
+				<em>Enter</em> key on the keyboard while a particular PV field is selected, wxmtxy 
+				will try to locate the named PV on the local EPICS network.
+				</p>
+				
+				<p>
+				Note: The <tt>VAL</tt> field handles the <em>Enter</em> key differently than the
+				other fields.  First, if the <tt>isMotorRecord</tt> checkbox is checked, then the 
+				PV names for the other fields of this axis (with empty name fields)
+				will be filled in automatically.
+				</p>
+				
+				Then the software will attempt to locate all fields of this axis.
+			</li>
+			
+			<li>
+				Then click the <em>Ok</em> button and <em>wxmtxy</em> will close the 
+				<em>EPICS Configuration</em> window and attempt to connect
+				with the local EPICS network.  In the next figure, the readback and target
+				values for both axes are displayed with the numerical precision specified 
+				by each EPICS motor record.  The description and engineering units
+				are also shown.  Compare with the following figure as well.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig4.png"><img 
+				src="graphics/fig4.png" alt="Figure 4"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Compare the previous figure with the standard motor control panel which includes 
+				both of these motors (plus one other in between).
+				<br/>
+				
+				<p>
+				<a href="graphics/fig5.png"><img 
+				src="graphics/fig5.png" alt="Figure 5"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Click the mouse inside the description box for the only row shown
+				and type <tt>starting values</tt>.  (No need to press the <em>Enter</em> key.
+				It will be ignored so there is no harm either.)
+				<br/>
+				
+				<p>
+				<a href="graphics/fig6.png"><img 
+				src="graphics/fig6.png" alt="Figure 6"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Then click the <em>Set</em> button (just right of the description) to
+				copy the current readback values for each axis to this row.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig7.png"><img 
+				src="graphics/fig7.png" alt="Figure 7" /></a>
+				</p>
+			</li>
+			
+			<li>  
+				Make a new row by selecting the <em>Page</em> menu, <em>Create new row</em> item.
+				Note that Ctrl+r is a keyboard shortcut for the same menu selection.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig8.png"><img
+				src="graphics/fig8.png" alt="Figure 8"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				The next figure shows that a new row has been created under the current tab selection.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig9.png"><img 
+				src="graphics/fig9.png" alt="Figure 9" /></a>
+				</p>
+			</li>
+			
+			<li>  
+				Enter a description, and X &amp; Y position values.  This example shows a small 
+				increment from the starting values.  You do the math particular for your
+				selected motor axes.  Make another row (Ctrl+r) and enter more values by typing.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig10.png"><img 
+				src="graphics/fig10.png" alt="Figure 10" /></a>
+				</p>
+			</li>
+			
+			<li>  
+				Create yet another row but this time, leave the description field empty.
+				Press the <em>Set</em> button and you will see that the software has supplied
+				a description autmoatically.  The default description is the date and time
+				that the <em>Set</em> button was pressed.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig11.png"><img 
+				src="graphics/fig11.png" alt="Figure 11"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Just for practice, try deleting the last row by pressing the <em>Delete</em>
+				button (far left of the row; the one with the <b>X</b>).  You will
+				be prompted for confirmation, as shown.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig12.png"><img 
+				src="graphics/fig12.png" alt="Figure 12"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Time to save the current settings to a file.  Choose the <em>File</em> menu,
+				<em>Save As ...</em> item.  
+				<br/>
+				
+				<p>
+				<a href="graphics/fig13.png"><img 
+				src="graphics/fig13.png" alt="Figure 13"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				A save file window will appear.  Navigate to a directory
+				to save your settings, enter a name <em>with the extension <tt>.XML</tt></em>
+				and finish your task.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig14.png"><img 
+				src="graphics/fig14.png" alt="Figure 14"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				With a text editor (in this case, nedit from www.nedit.org), you can inspect
+				the contents of the settings file.  Amidst all the identifying jargon,
+				you can identify the various pieces of information which have been
+				entered so far.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig15.png"><img 
+				src="graphics/fig15.png" alt="Figure 15"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Set the page title for this XY pair of positioners by choosing the
+				<em>Page</em> menu, <em>Change X,Y pair title</em> item.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig16.png"><img 
+				src="graphics/fig16.png" alt="Figure 16"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Set the title for the selected tab by choosing the
+				<em>Page</em> menu, <em>Change tab title</em> item.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig17.png"><img 
+				src="graphics/fig17.png" alt="Figure 17"/></a>
+				</p>
+			</li>
+			
+			<li>  
+				Save your changes to the same settings file by choosing the
+				<em>File</em> menu, <em>Save</em> item.  Inspect the settings file
+				in a text editor.
+				<br/>
+				
+				<p>
+				<a href="graphics/fig18.png"><img 
+				src="graphics/fig18.png" alt="Figure 18"/></a>
+				</p>  
+			</li>
+		</ol>
+		
+		
+		<hr />
+		
+		The wxmtxy application and related files are copyyright (c) 2009-2010.
+		<pre>
+#*************************************************************************
+# Copyright (c) 2009-2010 The University of Chicago, as Operator of Argonne
+#     National Laboratory.
+# Copyright (c) 2009-2010 The Regents of the University of California, as
+#     Operator of Los Alamos National Laboratory.
+# This file is distributed subject to a Software License Agreement found
+# in the file LICENSE that is included with this distribution. 
+#*************************************************************************
+		</pre>
+	</body>
+</html>

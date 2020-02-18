@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="wxmtxy_settings.xsl" ?>
+
+<!--
+########### SVN repository information ###################
+# $Date: 2009-05-23 09:53:17 -0500 (Sat, 23 May 2009) $
+# $Author: jemian $
+# $Revision: 56 $
+# $URL: https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/examples/test-settings.xml $
+# $Id: test-settings.xml 56 2009-05-23 14:53:17Z jemian $
+########### SVN repository information ###################
+-->
+
+<wxmtxy date="2009-04-21" time="22:42:25" version="1.0">
+  <XYpair name="a1y &amp; a2y test motors" selected="True">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c1:m2"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c1:m1"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="tab 1" selected="True">
+      <row name="starting position" x="0.00040" y="25.00038"/>
+      <row name="0.2 mm above" x="0.02076" y="25.02074"/>
+      <row name="0.2 mm below" x="-0.01997" y="24.98001"/>
+    </tab>
+  </XYpair>
+  <XYpair name="torture set" selected="not True">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="False"/>
+        <field name="VAL" pv="32idbLAX:float11"/>
+        <field name="RBV" pv="32idbLAX:float12"/>
+        <field name="EGU" pv="32idbLAX:string12"/>
+        <field name="DESC" pv="32idbLAX:string11"/>
+        <field name="DMOV" pv="32idbLAX:bit11"/>
+        <field name="STOP" pv="32idbLAX:bit12"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="False"/>
+        <field name="VAL" pv="32idbLAX:float1"/>
+        <field name="RBV" pv="32idbLAX:float2"/>
+        <field name="EGU" pv="32idbLAX:string2"/>
+        <field name="DESC" pv="32idbLAX:string1"/>
+        <field name="DMOV" pv="32idbLAX:bit1"/>
+        <field name="STOP" pv="32idbLAX:bit2"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="page 1">
+      <row name="page 1, row 0" x="1.0" y="-1.0"/>
+      <row name="page 1, row 1" x="1.1" y="-1.1"/>
+      <row/>
+    </tab>
+    <tab name="page 2" selected="True">
+      <row name="page 2, row 0" x="2.0" y="-2.0"/>
+      <row name="page 2, row 1" x="2.1" y="-2.1"/>
+      <row name="page 2, row 2" x="2.2" y="-2.2"/>
+      <row name="page 2, row 3" x="2.3" y="-2.3"/>
+      <row name="page 2, row 4" x="2.4" y="-2.4"/>
+      <row name="page 2, row 5" x="2.5" y="-2.5"/>
+      <row name="page 2, row 6" x="2.6" y="-2.6"/>
+    </tab>
+    <tab name="empty page"/>
+    <tab name="page 3">
+      <row name="page 3, row 0" x="3.0" y="-3.0"/>
+      <row name="page 3, row 1" x="3.1" y="-3.1"/>
+      <row name="page 3, row 2" x="3.2" y="-3.2"/>
+      <row name="page 3, row 3" x="3.3" y="-3.3"/>
+      <row name="page 3, row 4" x="3.4" y="-3.4"/>
+      <row name="page 3, row 5" x="3.5" y="-3.5"/>
+      <row name="page 3, row 6" x="3.6" y="-3.6"/>
+      <row name="page 3, row 7" x="3.7" y="-3.7"/>
+      <row name="page 3, row 8" x="3.8" y="-3.8"/>
+      <row name="page 3, row 9" x="3.9" y="-3.9"/>
+      <row name="page 3, row 10" x="3.10" y="-3.10"/>
+      <row name="page 3, row 11" x="3.11" y="-3.11"/>
+    </tab>
+    <tab name="empty page"/>
+    <tab/>
+  </XYpair>
+  <XYpair>
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="False"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="False"/>
+      </axis>
+    </EPICS_configuration>
+  </XYpair>
+  <XYpair name="energy">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="False"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="False"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="beamline" selected="True">
+      <row name="sweet spot" x="11" y="11.1"/>
+      <row/>
+      <row name="8 keV " x="8.0" y="8.06"/>
+      <row name="Cu K-alpha" x="8.04" y="8.1"/>
+      <row/>
+      <row/>
+    </tab>
+  </XYpair>
+  <XYpair name="sample">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c1:m2.VAL"/>
+        <field name="RBV" pv="32idbLAX:m58:c1:m2.RBV"/>
+        <field name="EGU" pv="32idbLAX:m58:c1:m2.EGU"/>
+        <field name="DESC" pv="32idbLAX:m58:c1:m2.DESC"/>
+        <field name="DMOV" pv="32idbLAX:m58:c1:m2.DMOV"/>
+        <field name="STOP" pv="32idbLAX:m58:c1:m2.STOP"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c1:m1"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="2009-04-09" selected="True">
+      <row/>
+      <row/>
+      <row name="EBrite Sample " x="-2.005" y="14.115"/>
+      <row name="J5 Ni Sample" x="-3.0" y="41.4"/>
+      <row name="TEM grid" x="-1.4" y="-9.6"/>
+      <row name="Sample out" x="-2" y="64."/>
+      <row/>
+      <row name="chondrite scan 160" x="-2.0" y="114.0"/>
+      <row name="chondrite scan 165" x="-2.0" y="115.0"/>
+      <row name="chondrite scan 170" x="-2.0" y="113.0"/>
+      <row/>
+      <row/>
+    </tab>
+  </XYpair>
+</wxmtxy>

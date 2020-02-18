@@ -1,0 +1,13 @@
+#!/bin/bash
+
+/APSshare/bin/python  /APSshare/pythonlib/wxmtxy/wxmtxy.py $*
+
+
+########### SVN repository information ###################
+# $Date: 2010-06-03 16:04:15 -0500 (Thu, 03 Jun 2010) $
+# $Author: jemian $
+# $Revision: 184 $
+# $URL: https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/wxmtxy $
+# $Id: wxmtxy 184 2010-06-03 21:04:15Z jemian $
+########### SVN repository information ###################
+

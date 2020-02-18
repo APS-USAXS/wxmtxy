@@ -1,0 +1,402 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+	########### SVN repository information ###################
+	# $Date: 2010-06-03 16:04:15 -0500 (Thu, 03 Jun 2010) $
+	# $Author: jemian $
+	# $Revision: 184 $
+	# $URL: https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/index.html $
+	# $Id: index.html 184 2010-06-03 21:04:15Z jemian $
+	########### SVN repository information ###################
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>wxmtxy: a GUI tool for EPICS</title>
+	</head>
+	<body bgcolor="#f0f0f8">
+
+		<!-- begin common header -->
+		<table>
+			<tbody>
+				<tr>
+					<td valign="top"><h1>wxmtxy</h1>
+						<h2>A GUI tool for EPICS</h2>
+						<br/><b>author: Pete R. Jemian (jemian@anl.gov)</b>
+						<br/><b>version: 0.5</b>
+					</td>
+					<td valign="top"><img 
+					src="graphics/logo.png" alt="wxmtxy logo"/></td>
+				</tr>
+			</tbody>
+		</table> 
+		<!-- end common header -->
+
+		<h1>Overview</h1>
+
+			<p><b>wxmtxy</b> provides EPICS support to users, 
+			allowing them to define a table of known positions for an X,Y 
+			positioner (motor) pair and provides a one-button click to drive 
+			the X,Y pair to a specific table setting.  Also can record 
+			current position into a setting.</p>
+		
+		    <p>Several sets of X,Y positioners can be configured.  (Each 
+		    set is separate.)  In fact, the positioners do not have to be 
+		    motors, but can be any type of EPICS PV that will accept a 
+		    numeric value.</p>
+		
+		    <p>wxmtxy is based on wxPython and relies on CaChannel to 
+		    communicate with EPICS.</p>
+		
+		    <p>In the Graphical User Interface (GUI), tooltips are provided
+            for most items.  Moving and pausing the mouse over a widget 
+            (GUI component such as a button or a label) will cause a terse
+            description of that widget to be displayed.  Moving the mouse
+            away will cause that tooltip to disappear.</p>
+		
+		    <p>For more help, explanations are provided in the HTML pages
+            you are viewing now.</p>
+		
+		
+		<h2>Example</h2>
+		
+		One way to learn how to use this tool is to work through an
+		<a href="example.html">example</a>.  This example shows how to start 
+		wxmtxy, configure it for two EPICS motors, set some positions, and
+		save the configuration into a file.
+		
+		<h2>Purpose and objectives</h2>
+		
+		<h2>How to use wxmtxy.py</h2>
+		
+		<h3>Create a new XYpair</h3>
+		You can add specifications to control additional sets of X and Y positioners.
+		Add space for a new pair of X and Y positioners by 
+		selecting the <em>Page</em> menu, <em>Create New X,Y pair</em> item.
+		Note that Ctrl+p is a keyboard shortcut for the same menu selection.
+
+		<h3>Configure the EPICS Process Variables</h3>
+
+		You configure EPICS by specifying the EPICS PV names.  An editor
+		is available by selecting the <em>Page</em> menu, 
+		<em>EPICS Configuration</em> item.
+		Note that Ctrl+Shift+e is a keyboard shortcut for the same menu selection.
+		
+		<br/>If the chosen positioner is an EPICS motor record, then you need only 
+		specify the EPICS PV name for the <tt>VAL</tt> field (of that axis).  
+		After typing the PV name, keeping the selection in the same entry box,
+		press the <em>Enter</em> and the software will check the local
+		EPICS network for that name.  The box will turn green if the PV is found and
+		stay pink of not found.  The checkbox
+		will be set automatically as to whether the PV is from a motor record.
+		
+		<br/>If you make a mistake in typing,
+		or press the enter key in the wrong place, you can <em>Revert</em> any 
+		changes back to the default values or <em>Clear X</em> or <em>Clear Y</em>
+		to clear all PV names and checkboxes from either of the two axes.
+		<br/>
+		
+		<p>
+		<a href="graphics/fig3.png"><img 
+		src="graphics/fig3.png" alt="Figure 3"/></a>
+		</p>
+
+		<h3>Create a new Tab</h3>
+		You can add a new tab to the end of the list of tabs of the displayed XYpair
+		to document a set of positions for the X and Y positioners.
+		Make a new tab by selecting the <em>Page</em> menu, <em>Create new tab</em> item.
+		Note that Ctrl+t is a keyboard shortcut for the same menu selection.
+
+		<h3>Create a new Row</h3>
+		You can add a new row to the end of the displayed tab (of the displayed XYpair)
+		to document a new position for the X and Y positioners.
+		Make a new row by selecting the <em>Page</em> menu, <em>Create new row</em> item.
+		Note that Ctrl+r is a keyboard shortcut for the same menu selection.
+
+		<h3>Save the settings to a Settings File</h3>
+
+		To save the current settings to a file, select the <em>File</em> menu,
+		<em>Save As ...</em> item.  
+		<br/>
+		
+		<p>
+		<a href="graphics/fig13.png"><img 
+		src="graphics/fig13.png" alt="Figure 13"/></a>
+		</p>
+		
+		<p>A save file window will appear.  Navigate to a directory
+		to save your settings, enter a name <em>with the extension <tt>.XML</tt></em>
+		and finish your task.
+		</p>
+		
+		<p>
+		<a href="graphics/fig14.png"><img 
+		src="graphics/fig14.png" alt="Figure 14"/></a>
+		</p>
+
+		<h2>Definitions</h2>
+		
+		<h3>EPICS PV fields</h3>
+		<table border="2" title="EPICS PV fields">
+			<thead>
+				<tr>
+					<th>field</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><b><tt>DESC</tt></b></td>
+					<td>EPICS PV to use when asking the positioner for its description string</td>
+				</tr>
+				<tr>
+					<td><b><tt>DMOV</tt></b></td>
+					<td>EPICS PV to use when asking the positioner if it is done moving.
+						DMOV=1: not moving, DMOV=0: moving</td>
+				</tr>
+				<tr>
+					<td><b><tt>EGU</tt></b></td>
+					<td>EPICS PV to use when asking the positioner for its engineering units string</td>
+				</tr>
+				<tr>
+					<td><b><tt>RBV</tt></b></td>
+					<td>EPICS PV to use when asking the positioner where it is now</td>
+				</tr>
+				<tr>
+					<td><b><tt>STOP</tt></b></td>
+					<td>EPICS PV to use when telling the positioner to stop moving immediately</td>
+				</tr>
+				<tr>
+					<td><b><tt>VAL</tt></b></td>
+					<td>EPICS PV to use when telling the positioner to move to a new value</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h3>General terms</h3>
+		<table border="2" title="General terms">
+			<thead>
+				<tr>
+					<th>term</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>EPICS&nbsp;PV</td>
+					<td>EPICS Process variable name.  See http://www.aps.anl.gov/epics.
+						Perhaps a document such as http://www.aps.anl.gov/epics/base/R3-14/10-docs/CAref.html
+						for more details.</td>
+				</tr>
+				<tr>
+					<td>EPICS motor record</td>
+					<td>EPICS abstract specification of a positioner such as a stepping motor.
+						See http://www.aps.anl.gov/bcda/synApps/motor/index.html
+						or http://www.aps.anl.gov/bcda/synApps/motor/R6-4/motorRecord.html for more details.</td>
+				</tr>
+				<tr>
+					<td>XYpair</td>
+					<td>set of Tabs in wxmtxy belonging to an XYpair</td>
+				</tr>
+				<tr>
+					<td>Tab</td>
+					<td>set of Rows in a Tab of an XYpair in wxmtxy</td>
+				</tr>
+				<tr>
+					<td>Row</td>
+					<td>specific combination in wxmtxy of (label, X_position, Y_position)</td>
+				</tr>
+				<tr>
+					<td>Settings File</td>
+					<td>XML file with specifications for EPICS Process Variables
+						and saved positions for the wxmtxy.py application</td>
+				</tr>
+				<tr>
+					<td>Text positions file</td>
+					<td>The "Text positions file" is a plain text file and can be
+						prepared with any text editor.  The file describes a set 
+						of positions to be loaded into a Tab of the wxmyxy application.</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h1>Files</h1>
+		
+		    <p>The "Text positions file" is a plain text file and can be
+                prepared with any text editor.  The file describes a set 
+                of positions to be loaded into a Tab of the wxmtxy application.
+                It contains an arbitrary number of rows.  Each row contains 
+                three values, separated by tabs.
+                The values are "label X_position Y_position"
+                where the positions are in "mm".
+                An example is provided
+                (<a href="examples/standard-paddle.txt">examples/standard-paddle.txt</a>)
+                that describes the positions on the standard 4-column paddle.</p>
+		
+		<p>Users will likely produce a"Text positions file" by preparing a 
+                spreadsheet with sample description (label) and X,Y positions
+                on the sample paddle.  The origin (0,0) is the notch on the 
+                upper-right edge of the paddle.</p>
+		
+		<h3>example file: Text positions</h3>
+		<table border="2" title="Text positions file">
+			<thead>
+				<tr>
+					<th>file</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="examples/standard-paddle.txt"><code>examples/standard-paddle.txt</code></a></td>
+					<td>positions on the standard 4-column paddle</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h3>example file: XML Settings</h3>
+		<table border="2" title="XML Settings file">
+			<thead>
+				<tr>
+					<th>file</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="examples/test-settings.xml"><code>examples/USAXS_XY.xml</code></a></td>
+					<td>settings file from USAXS sample and detector stages</td>
+				</tr>
+				<tr>
+					<td><a href="examples/test-settings.xml"><code>examples/test-settings.xml</code></a></td>
+					<td>settings file used by developer to test various features</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h1>Python source file documentation</h1>
+		
+		<h3>PyDocs from wxmtxy source code</h3>
+		<table border="2" title="PyDocs">
+			<thead>
+				<tr>
+					<th>file</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="pydoc/wxmtxy.html">wxmtxy.py</a></td>
+					<td>starts the wxmtxy application</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_root.html">wxmtxy_root.py</a></td>
+					<td>Main frame of wxmtxy application</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_pair.html">wxmtxy_pair.py</a></td>
+					<td>configuration for X,Y pair of EPICS positioners</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_tab.html">wxmtxy_tab.py</a></td>
+					<td>set of rows with positioner settings</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_row.html">wxmtxy_row.py</a></td>
+					<td>Define/manage GUI elements for one row of the table</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_pvsetup.html">wxmtxy_pvsetup.py</a></td>
+					<td>configure EPICS for X,Y pair</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_xml.html">wxmtxy_xml.py</a></td>
+					<td>read/write routines for wxmtxy XML settings</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_axis.html">wxmtxy_axis.py</a></td>
+					<td>Maintain EPICS PVs and connections for one axis</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/wxmtxy_version.html">wxmtxy_version.py</a></td>
+					<td>version information for wxmtxy</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/setup.html">setup.py</a></td>
+					<td>Python distutils packaging file for wxmtxy</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>Helper files that could work with other Python projects</h3>
+		<table border="2" title="Helper files">
+			<thead>
+				<tr>
+					<th>file</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="pydoc/wxmtxy_htmlview.html">wxmtxy_htmlview.py</a></td>
+					<td>HtmlView to view HTML-formatted help files</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/pvConnect.html">pvConnect.py</a></td>
+					<td>simplified connections to an EPICS PV using CaChannel</td>
+				</tr>
+				<tr>
+					<td><a href="pydoc/menuLauncher.html">menuLauncher.py</a></td>
+					<td>standalone GUI to launch various utilities</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h3>Other files</h3>
+		<table border="2" title="Other files">
+			<thead>
+				<tr>
+					<th>file</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="LICENSE">LICENSE</a></td>
+					<td>APS EPICS extensions software license</td>
+				</tr>
+				<tr>
+					<td><a href="README">README</a></td>
+					<td>Comments to developers reading the source code files</td>
+				</tr>
+				<tr>
+					<td><a href="examples/wxmtxy_settings.xsl">XSLT stylesheet</a></td>
+					<td>XSLT stylesheet to display settings files nicely in a WWW browser</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h2>Requirements</h2>
+		<!-- Need some writing here -->
+		<p>Python</p>
+		<p>wxPython</p>
+		<p>ca</p>
+		<p>CaChannel</p>
+
+<hr />
+
+The wxmtxy application and related files are copyyright (c) 2009.
+<pre>
+#*************************************************************************
+# Copyright (c) 2009-2010 The University of Chicago, as Operator of Argonne
+#     National Laboratory.
+# Copyright (c) 2009-2010 The Regents of the University of California, as
+#     Operator of Los Alamos National Laboratory.
+# This file is distributed subject to a Software License Agreement found
+# in the file LICENSE that is included with this distribution. 
+#*************************************************************************
+</pre>
+
+
+	</body>
+</html>

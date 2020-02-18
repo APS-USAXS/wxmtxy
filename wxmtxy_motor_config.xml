@@ -1,0 +1,513 @@
+<?xml version="1.0" ?>
+<wxmtxy date="2020-02-07" time="08:40:16" version="1.0">
+  <XYpair name="USAXS" selected="True">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:aero:c2:m1.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m3.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="D stage" selected="True">
+      <row name="CCD direct beam - DO NOT CHANGE" x="0" y="0"/>
+      <row name="CCD M beam 12keV 440 - DO NOT CHANGE" x="0" y="46.0000000"/>
+      <row name="CCD M beam 12keV - DO NOT CHANGE" x="0.500" y="14.4000000"/>
+      <row name="CCD M beam 10.5keV 4 reflections - DO NOT CHANGE" x="0.000" y="16.36000"/>
+      <row name="CCD M beam 15keV 4 reflections - DO NOT CHANGE" x="0.000" y="17.01000"/>
+      <row name="CCD M beam 12keV 4 reflections - DO NOT CHANGE" x="0.000" y="16.77000"/>
+      <row name="CCD A beam 18keV 4 reflections - DO NOT CHANGE" x="0" y="32.19000"/>
+      <row name="Diode A beam 18keV 4 reflections - DO NOT CHANGE" x="67.655" y="17.37770"/>
+      <row name="CCD A beam 12keV 4 reflections - DO NOT CHANGE" x="0" y="35.80000"/>
+      <row name="Diode A beam 12keV 4 reflections - DO NOT CHANGE" x="65.863" y="22.57242"/>
+      <row name="CCD A beam 10.5keV 4 reflections - DO NOT CHANGE" x="0.000" y="35.7"/>
+      <row name="CCD M beam 10.5keV-OLD" x="0.001" y="24.911"/>
+      <row name="CCD M beam 12keV-OLD" x="0.001" y="25.031"/>
+      <row name="Diode A beam 12keV" x="66.775" y="22.11801"/>
+      <row name="CCD A beam 12keV" x="0.000" y="39.51000"/>
+      <row name="Mythen" x="0.000" y="16.77000"/>
+      <row name="Diode direct beam" x="67.750" y="-15.00000"/>
+      <row name="Diode 24keV" x="68.856" y="14.1465155"/>
+      <row name="CCD M beam 21keV " x="0.000" y="14.7000000"/>
+      <row name="CCD A beam 21 keV" x="0.000" y="29.3500000"/>
+      <row name="Diode M beam 21keV" x="67.331" y="-1.53754"/>
+      <row name="CCD M beam 24keV" x="-0.000" y="14.7400000"/>
+      <row name="DIode direct beam" x="67.488" y="-16.3554760"/>
+      <row name="Diode 19keV" x="67.592" y="7.4915225"/>
+      <row name="Diode M beam 19keV" x="67.649" y="-6.5609160"/>
+      <row name="Diode A beam February 2019 21keV" x="70.10" y="12.95"/>
+      <row name="CCD A beam February 2019 21keV, Al10, Ti 5" x="0" y="28.76"/>
+      <row name="Diode 21keB 6-19-2019" x="70.141" y="12.8882835"/>
+    </tab>
+    <tab name="E-check">
+      <row name="CCD direct beam" x="0.000" y="0"/>
+      <row name="Diode direct beam" x="67.500" y="-16.24898"/>
+    </tab>
+    <tab name="Diode">
+      <row name="Diode Direct beam" x="67.500" y="-16.24898"/>
+      <row name="Diode M beam" x="65.000" y="0"/>
+    </tab>
+    <tab name="imaging">
+      <row name="2 reflections CCD - ax=-37" x="0.000" y="19.13000"/>
+      <row name="2 reflections Diode" x="69.385" y="3.2082105"/>
+      <row name="4 reflections CCD " x="0" y="23.8"/>
+      <row name="4 reflections Diode" x="67.490" y="7.27023"/>
+      <row/>
+    </tab>
+    <tab name="Tilt survey">
+      <row name="M beam CCD up" x="-8.280" y="-86.6000000"/>
+      <row name="A1 beam az 205, 21keV, ax -30, dist=640mm" x="-0.126" y="139.4321460"/>
+      <row name="A2 beam, ax -39" x="-0.126" y="-82.0000000"/>
+      <row name="A4 beam ax -48" x="0.000" y="-66.05250"/>
+      <row name="A1 beam 21keV az 250 ax -30" x="0.221" y="132.39062"/>
+      <row name="A2 beam ax -39" x="0" y="-75.00000"/>
+      <row name="A1 beam 21keV az 250 ax -15 Delhi" x="-0.020" y="130.63594"/>
+      <row name="A2 beam ax -40 Delhi" x="0.190" y="-78.75000"/>
+      <row name="A2 beam Prague" x="0.221" y="-75.21000"/>
+      <row name="A1 Imaging crystals" x="0.000" y="148.25000"/>
+      <row name="A2 Imaging crystals" x="0.000" y="-81.03000"/>
+      <row name="A1 Delhi 21keV AX=-31, AZ=270" x="-8.280" y="110.6600000"/>
+      <row name="A2 Delhi 21keV AX = -39.1, AZ=270" x="-8.280" y="-79.4000000"/>
+      <row name="A1 Delhi 24keV, AX=-33" x="0.000" y="104.5650000"/>
+      <row name="A2 Delhi 24keV, AX=-39" x="0.000" y="-84.0750000"/>
+      <row name="A0 440Xtals 17keV 220 ax=60" x="-8.200" y="-63.4600000"/>
+      <row name="A1 440Xtals 117keV, 220, ax=-29 or -13, az=342" x="-8.200" y="156.3400000"/>
+      <row name="A2 440Xtals 117keV 220 , ax=-43" x="-8.200" y="-46.6600000"/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+    </tab>
+    <tab name="D stage Moscow">
+      <row name="Direct beam " x="00" y="0"/>
+      <row name="M stage CCD 18keV" x="0" y="15.50000"/>
+      <row name="A stage CCD 24keV" x="0" y="30.40000"/>
+      <row name="Diode A stage 26keV" x="67.000" y="11.80000"/>
+      <row name="A stage CCD 26keV" x="0" y="30.70000"/>
+      <row name="A stage CCD 12keV" x="0" y="29.70000"/>
+      <row name="A stage CCD 10.5keV" x="0" y="36.30000"/>
+      <row name="A stage diode 18keV" x="67" y="14"/>
+      <row name="A stage CCD 18keV" x="0" y="30.68973"/>
+      <row name="M stage diode" x="70.490" y="-0.01000"/>
+    </tab>
+    <tab name="A stage Delhi">
+      <row name="M beam 21keV" x="0.000" y="14.73000"/>
+      <row name="A beam CCD 21keV" x="0.000" y="30.20000"/>
+      <row name="A beam Diode 21keV " x="67.558" y="13.71961"/>
+      <row name="DIrect beam" x="0.000" y="0"/>
+      <row name="M beam CCD 24keV 4 ref." x="0.000" y="14.82000"/>
+      <row name="A beam CCD 24keV 4 ref." x="-0.000" y="29.0500000"/>
+      <row/>
+      <row name="A beam 21keV CCD" x="0.000" y="29.0000000"/>
+    </tab>
+    <tab name="Tilt Tcam">
+      <row name="M beam 21keV 2-5-2019 ax=20" x="-8.625" y="-86.4800000"/>
+      <row name="A1 beam 21keV, 2-5-2019 ax=-17, az=185" x="-8.625" y="138.1000000"/>
+      <row name="A2 beam 21keV, 10-1-2019 ax=-36" x="-8.625" y="-79.4300000"/>
+      <row name="A1 beam 21keV, 10-1-20179 ax=-17, az=240" x="-8.625" y="120.5400000"/>
+      <row name="A1 Beam 21keV, 8-2-2018, ax=-17, az=200" x="-8.625" y="133.5500000"/>
+      <row name="A1 Beam 21keV, 4-10-18, ax=-17, az=220" x="-8.625" y="126.7400000"/>
+      <row name="A2 beam 4 reflections ax=-47" x="-8.625" y="-72.2000000"/>
+      <row/>
+      <row name="M beam 18keV 440 settings ax=50" x="-8.405" y="-79.6700000"/>
+      <row name="A1 beam 220 ax=-28.9, Ar=10.3628" x="-8.405" y="157.1300000"/>
+      <row name="A2 beam 220 ax -38, Ar=10.3628" x="-8.405" y="-62.9000000"/>
+      <row/>
+      <row name="M beam 12keV " x="-7.930" y="-90.0700000"/>
+      <row name="A1 beam Imaging, az=524, ax=46" x="-7.930" y="124.7300000"/>
+      <row name="A2 beam imaging, az=524, ax=36" x="-7.930" y="-85.7700000"/>
+      <row/>
+      <row name="A1 Imgin beam, az=202" x="-8.405" y="131.9300000"/>
+      <row name="A2 Img beam, az=202" x="-8.405" y="-84.4700000"/>
+      <row/>
+      <row/>
+      <row/>
+    </tab>
+    <tab name="XPCS">
+      <row name="mythenopenT" x="-56.246" y="42.0553465"/>
+    </tab>
+    <tab name="FLY">
+      <row name="A beam 21keV 4-3-2018" x="2.400" y="101.3400000"/>
+    </tab>
+    <tab name="440">
+      <row name="Direct beam." x="0" y="0"/>
+      <row name="220 M2 17keV MR=11.0517" x="0.000" y="13.3000000"/>
+      <row name="440 M2 17keV, MR=22.4251" x="0.000" y="25.0000000"/>
+      <row name="440 M4 17keV, MR=22.4251" x="0.000" y="37.6400000"/>
+      <row name="220 A2 17keV, AR=10.9067, ax=-43" x="0.000" y="54.5400000"/>
+      <row/>
+    </tab>
+  </XYpair>
+  <XYpair name="SBUSAXS">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:aero:c2:m1.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m3.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="D stage" selected="True">
+      <row name="CCD M4 beam  10.5keV" x="0" y="18.96000"/>
+      <row name="CCD MS beam 10.5keV" x="12.600" y="18.963"/>
+      <row name="CCD AS beam 10.5keV" x="25.000" y="18.963"/>
+      <row name="CCD A beam" x="25.900" y="37.562"/>
+      <row name="PD AS beam" x="17.600" y="86.000"/>
+      <row name="PD A beam 10.5keV" x="92.023" y="18.24000"/>
+      <row name="CCD A beam 10.5keV" x="25.000" y="38.37000"/>
+      <row name="CCD As beam 10.5keV" x="25.000" y="26.355"/>
+      <row name="PD Hybrid 10.5keV" x="4.875" y="121.389"/>
+      <row name="Scintillator" x="-38.588" y="123.515"/>
+      <row name="PD A beam 16.9keV" x="95" y="20.824"/>
+      <row name="CCD M4 beam 12keV" x="0.000" y="14.2876760"/>
+      <row name="CCD MS beam 12keV" x="12.5000" y="14.2876760"/>
+      <row name="Mythen" x="-60" y="59"/>
+      <row name="CCD AS beam 12keV" x="25.190" y="14.2876760"/>
+      <row name="Diode AS beam 12keV" x="94.716" y="-1.26000"/>
+      <row name="Diode A beam 12keV" x="94.716" y="15.91"/>
+      <row/>
+      <row name="CCD 18keV M beam" x="0" y="14.7300000"/>
+      <row name="CCD 18keV MS beam" x="13.100" y="14.7300000"/>
+      <row name="CCD 18keV AS beam" x="25.900" y="28.7000000"/>
+      <row name="Diode 18keV A beam" x="95.754" y="13.0097220"/>
+      <row/>
+    </tab>
+  </XYpair>
+  <XYpair name="A stage">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:aero:c1:m1.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m5.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="Seoul">
+      <row name="Align position - edge 1st crystal 18keV cut beam in half. " x="0.000" y="0"/>
+      <row name="1 reflection out " x="-29.000" y="0"/>
+      <row name="1 reflection Fl. screen" x="-22" y="0"/>
+      <row name="2 reflections 18keV" x="-40" y="0"/>
+      <row name="4 reflections 18keV" x="-47" y="0"/>
+      <row name="4 ref HybUSAXS 10.5keV" x="-36.250" y="0"/>
+      <row name="A stage out of beam" x="100" y="0"/>
+      <row name="A stage 25keV 4 reflections" x="-40.00000" y="0"/>
+      <row name="4 refl. USAXS 10.5keV" x="-40.500" y="0"/>
+      <row name="1 reflection SBUSAXS" x="8" y="0"/>
+      <row name="1 refl align tilts" x="-28.800" y="0"/>
+      <row name="Stage out" x="5" y="0"/>
+      <row/>
+    </tab>
+    <tab name="220 Seoul">
+      <row name="18keV  -  4 reflections - DO NOT CHANGE" x="-48.000" y="0.00000"/>
+      <row name="12keV  -  4 reflections DO NOT CHANGE" x="-42" y="-0.2"/>
+      <row name="10.5keV 4 reflections" x="-42.500" y="-0.2"/>
+      <row name="16.9keV SBUSAXS 4 reflections" x="-20.000" y="0.00000"/>
+      <row name="16.9keV USAXS 4 ref." x="-43.000" y="-8.20"/>
+      <row name="17keV 2 reflections alignment" x="-41.000" y="0"/>
+      <row name="A stage out" x="100" y="0"/>
+      <row name="A stage 1 reflection" x="-29.000" y="0"/>
+      <row name="A stage 2 reflections" x="-41.000" y="0"/>
+      <row name="11.5keV  reflections" x="-43" y="-0.15"/>
+      <row name="11.5keV 1 reflection" x="-29" y="-0.15"/>
+      <row name="10.5keV SBUSAXS " x="-17.5" y="-0.15"/>
+      <row name="12keV USAXS 6/18/2014" x="-43" y="-0.15"/>
+      <row name="19.5keV" x="-50.000" y="0"/>
+      <row name="20keV" x="-50.000" y="0.2"/>
+      <row name="21keV" x="-50.400" y="0.2"/>
+      <row name="24keV" x="-51.000" y="0"/>
+      <row name="23keV" x="-51.5" y="0.20000"/>
+    </tab>
+    <tab name="440 Seoul">
+      <row name="1 reflection setting" x="-19.000" y="0"/>
+      <row name="2 reflection settings" x="-38.5" y="0"/>
+      <row name="4 reflections settings" x="-40.500" y="0"/>
+      <row name="24keV 4 reflections" x="-43.000" y="0.00000"/>
+      <row name="18keV 2 reflections 220" x="-40.000" y="0.0000000"/>
+      <row/>
+    </tab>
+    <tab name="Imaging">
+      <row name="Crystal corner" x="49.600" y="0.2"/>
+      <row name="1 reflection" x="45.000" y="0.2"/>
+      <row name="2 reflections start" x="37.500" y="0.8"/>
+      <row name="2nd crystal bottom" x="37.500" y="-2.30000"/>
+      <row name="2 reflections" x="30.0" y="0.8"/>
+      <row name="4 reflections " x="-42.500" y="0.20000"/>
+      <row name="ABeam"/>
+      <row/>
+    </tab>
+    <tab name="2D USAXS">
+      <row name="10.5keV 4 reflections" x="-17.500" y="-0.10000"/>
+    </tab>
+    <tab name="Delhi 3.65mm" selected="True">
+      <row name="18keV 4 reflections" x="-46.5" y="0"/>
+      <row name="24keV 4 reflections - 10/25/2016 - define ay=0 here" x="-49.000" y="0.0000000"/>
+      <row name="26keV 4 reflections" x="-49" y="0"/>
+      <row name="28keV 4 reflections" x="-50.000" y="0.0000000"/>
+      <row name="12keV 4 reflections - 10/25/2016" x="-40.500" y="-0.3000000"/>
+      <row name="10.5keV 4 ref A 6 ref M" x="-41.000" y="6.80000"/>
+      <row name="2 reflections 21keV" x="-40" y="0"/>
+      <row name="21keV 4 reflections" x="-49" y="0"/>
+      <row name="Start 2nd reflection" x="-35" y="0"/>
+      <row name="1 reflection FLuorescent screen" x="-13" y="0."/>
+      <row name="1 reflection survey" x="-33.000" y="0.0000000"/>
+      <row name="2 reflections 24keV" x="-39.996" y="0"/>
+      <row name="23 keV 4 reflections" x="-49.001" y="0.1500000"/>
+      <row name="14.5keV" x="-42.501" y="0.0000000"/>
+      <row name="19 keV" x="-47.000" y="0.0000000"/>
+      <row name="11 keV 4 reflections 10-2016 - limited height" x="-40.5" y="-.3"/>
+      <row name="11 keV 6 reflections 10-2016 full beam height" x="-44.500" y="-0.3000000"/>
+      <row name="10.5keV 6 reflections, " x="-49" y="0"/>
+      <row name="16.9keV 4 reflection, 4-16-2017" x="-46.000" y="0.0000000"/>
+      <row name="February2019_21keV" x="-48.3" y="0.0000000"/>
+    </tab>
+  </XYpair>
+  <XYpair name="M stage">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m3.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m2.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="Prague 7mm">
+      <row name="12keV 2 reflections" x="15.000" y="0"/>
+      <row name="Out of beam" x="-79.000" y="0"/>
+      <row name="12keV 4 reflections" x="23.000" y="0"/>
+      <row name="out of beam no box" x="-5" y="0"/>
+    </tab>
+    <tab name="220 settings">
+      <row name="17-18keV 4 reflections" x="26" y="0"/>
+      <row name="12 keV 4 reflections" x="21" y="0.00"/>
+      <row name="10.5keV 4 reflections" x="17" y="0.00"/>
+      <row name="10.5keV 6 reflections-not valid" x="23.000" y="0"/>
+      <row name="OUT" x="-70" y="0"/>
+      <row name="15keV 6 reflections-not valid" x="22" y="0"/>
+      <row name="12keV 6 reflections-not valid" x="23" y="0"/>
+      <row name="18keV 2 reflections-not valid" x="15" y="0"/>
+      <row name="19.5keV" x="26.000" y="0.2"/>
+      <row name="20 keV" x="26.000" y="0.7"/>
+      <row name="21keV" x="26.000" y="1.199980"/>
+    </tab>
+    <tab name="440 settings">
+      <row name="21keV 4 reflections" x="20.000" y="0"/>
+      <row name="21keV 1 reflection" x="5" y="0"/>
+      <row name="21keV 2 reflections" x="12" y="0"/>
+      <row name="23keV 4 reflections" x="17" y="0"/>
+      <row name="24keV 4 reflections" x="17" y="0.000039"/>
+      <row name="18keV 4 reflections" x="20.000" y="0"/>
+    </tab>
+    <tab name="Moscow 3.6mm" selected="True">
+      <row name="1 reflection" x="3.000" y="0"/>
+      <row name="4 reflections 18keV - 10/26/2016" x="20" y="0.0000"/>
+      <row name="4 reflections 24keV - 10/25/2016" x="24.000" y="0"/>
+      <row name="4 reflections 26keV" x="24.000" y="0"/>
+      <row name="4 reflections 28keV" x="24.000" y="0.500000"/>
+      <row name="4 reflections 12keV - 10/25/2016" x="16" y="0"/>
+      <row name="4 reflections 11keV" x="16.000" y="0"/>
+      <row name="6 reflections 10.5keV" x="18.600" y="1.705303E-13"/>
+      <row name="4 reflections 23keV" x="24.000" y="-0.000039"/>
+      <row name="4 reflections  21keV" x="21.000" y="0"/>
+      <row name="4 reflections 14.5keV" x="17.5" y="0"/>
+      <row name="0 reflection" x="-10" y="0"/>
+      <row name="19 keV" x="21.000" y="0"/>
+      <row name="12 keV 6 reflections 10-2016" x="21" y="0"/>
+      <row name="11 keV 4 reflections 10-2016" x="19.700" y="1.136868E-13"/>
+      <row name="2 reflections 21keV" x="12" y="0"/>
+      <row name="16.9keV, 4 reflctions, 4-16-2017" x="19.000" y="5.684342E-14"/>
+      <row name="14keV 2 reflections" x="11.000" y="-5.684342E-14"/>
+      <row name="21keV and 18keV common" x="21.000" y="0.000000"/>
+      <row name="February2019_21keV" x="22.0" y="0.000000"/>
+    </tab>
+  </XYpair>
+  <XYpair name="Mr &amp; Ar">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:aero:c0:m1"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:aero:c3:m1"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="Prague 7mm">
+      <row name="12 keV 220" x="15.58740" y="15.5756"/>
+      <row name="12keV 440" x="32.52367" y="32.5123000"/>
+      <row name="8keV 220" x="23.79379" y="23.7798929"/>
+      <row name="16keV 440" x="11.28430" y="11.288713"/>
+      <row name="17.5keV-not valid" x="10.63076" y="10.636570"/>
+      <row name="11.5keV-not valid" x="16.29606" y="16.297030"/>
+      <row name="16.8keV 4/17/2013-not valid" x="11.09088" y="11.023154"/>
+      <row name="16.0keV 4/17/2013-not valid" x="11.64196" y="11.631065"/>
+      <row name="17.8keV 6/11/2014-not valid" x="10.38853" y="10.3547410"/>
+      <row name="18keV-not valid" x="10.33853" y="10.3597600"/>
+      <row name="17keV - 3/18/2015-not valid" x="10.91266" y="10.9518590"/>
+      <row name="10.5keV- theoretical-not valid" x="17.90717" y="10.90717"/>
+      <row name="17.6keV" x="10.59699" y="10.5633"/>
+      <row name="17.9keV 7/1/2015" x="10.41313" y="10.3799440"/>
+      <row name="19.5keV" x="9.57766" y="9.5111450"/>
+      <row name="20keV" x="9.33791" y="9.2712790"/>
+      <row name="21keV" x="8.81519" y="8.8264050"/>
+      <row name="19.055keV  10-2016" x="9.87378" y="9.6504928"/>
+      <row name="12 keV 4 reflections 10-2016" x="15.72477" y="15.4991634"/>
+      <row name="11 keV 4 reflections 10-2016" x="17.18599" y="16.9583018"/>
+    </tab>
+    <tab name="440 settings Prg/Seoul">
+      <row name="21keV" x="17.91284" y="17.915723"/>
+      <row name="23keV" x="16.30764" y="16.308710"/>
+      <row name="24keV (double 12keV)" x="15.63188" y="15.6000520"/>
+      <row name="18keV (220)" x="10.38" y="10.3625999"/>
+      <row name="18keV (440)" x="21.0654400" y="21.0472999"/>
+    </tab>
+    <tab name="Imaging">
+      <row name="Img Xtal, 17.7keV, 4 reflections" x="10.50398" y="10.3528000"/>
+      <row name="Img Xtal, 17.7keV, Imaging (2ref)" x="10.50398" y="10.3554000"/>
+      <row name="21keV, 2 reflections ax=-45" x="8.9086210" y="8.8800000"/>
+      <row name="21keV, 4 reflections" x="8.87945" y="8.8939970"/>
+      <row name="temp21keV" x="8.9086210" y="8.3486999"/>
+    </tab>
+    <tab name="Moscow and Seoul">
+      <row name="18keV" x="10.34771" y="10.3179940"/>
+      <row name="21keV" x="8.87756" y="8.8720000"/>
+      <row name="24keV" x="7.74437" y="7.7175360"/>
+      <row name="26keV" x="7.13982" y="7.1166190"/>
+      <row name="28keV" x="6.62890" y="6.6051000"/>
+      <row name="12keV" x="15.60243" y="0.0000000"/>
+      <row name="11keV" x="17.06258" y="0.0000000"/>
+      <row name="10.5keV" x="17.90461" y="17.8790000"/>
+      <row name="23keV" x="8.08191" y="8.0551140"/>
+    </tab>
+    <tab name="Moscow and Delhi" selected="True">
+      <row name="21keV" x="8.8913720" y="8.7375667"/>
+      <row name="28keV" x="6.75882" y="6.5483375"/>
+      <row name="30keV, 0.1mm beam size due to M stage, my=0.6" x="6.21264" y="6.1000260"/>
+      <row name="29keV, 0.4mm beam size, my=0.7" x="6.42584" y="6.3134910"/>
+      <row name="24keV" x="7.86422" y="7.6365835"/>
+      <row name="26keV" x="7.27000" y="7.0594399"/>
+      <row name="12keV" x="15.73783" y="15.5088853"/>
+      <row name="21keV 6-19-2019" x="8.8857016" y="8.8857186"/>
+      <row name="16.95keV 6-19-2019"/>
+    </tab>
+  </XYpair>
+  <XYpair name="Slits">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m6.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m5.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="tab 1" selected="True">
+      <row name="No mirror" x="0" y="-0.0000"/>
+      <row name="Mirrors Pt" x="3" y="-0.0000"/>
+    </tab>
+  </XYpair>
+  <XYpair name="pinSAXS">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:mxv:c0:m8"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:mxv:c0:m2"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="PinSAXS" selected="True">
+      <row name="12keV" x="0"/>
+      <row name="18keV" x="0"/>
+      <row name="21keV" x="35.1" y="12.7"/>
+      <row name="21keV February 2019" x="86" y="13.5"/>
+    </tab>
+  </XYpair>
+  <XYpair name="Waxs">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c1:m7"/>
+        <field name="DESC" pv="none"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m4"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="WAXS" selected="True">
+      <row name="18keV" x="314" y="8"/>
+      <row name="12keV" x="314" y="16"/>
+    </tab>
+  </XYpair>
+  <XYpair name="USAXSimaging">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c1:m7"/>
+        <field name="RBV" pv="9idcLAX:m58:c1:m7"/>
+        <field name="EGU" pv=" mm"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m4"/>
+        <field name="RBV" pv="9idcLAX:m58:c0:m4"/>
+        <field name="EGU" pv=" mm"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="tab 1" selected="True">
+      <row name="Camera In (A beam)" x="240" y="10.470"/>
+      <row name="Camera in (M beam)" x="240" y="6.87"/>
+      <row name="Camera out" x="115.000" y="27.802"/>
+    </tab>
+  </XYpair>
+  <XYpair name="GSlitsXY">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c0:m6.VAL"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c1:m5.VAL"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="tab 1" selected="True">
+      <row name="Main beam - no M stage" x="0" y="0"/>
+      <row name="M beam 21keV" x="0" y="14.80000"/>
+      <row name="M beam 24keV" x="0" y="14.8"/>
+      <row name="M beam 16.9keV" x="-0.010" y="14.73679"/>
+      <row name="12 keV 4 Reflections est" x="0"/>
+      <row name="Out of beam" x="-80.000" y="14.80000"/>
+      <row name="21keV February 2019" x="1.015" y="14.67592"/>
+    </tab>
+  </XYpair>
+  <XYpair name="M tilts">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m2"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="9idcLAX:m58:c2:m1"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="tab 1" selected="True">
+      <row name="main beam mx=-15" x="15.400" y="-90.000"/>
+      <row name="1 reflection mx - 6.3 21 keV" x="0" y="116.900"/>
+      <row name="2 reflections mx=14 21keV" x="0" y="6.720"/>
+    </tab>
+  </XYpair>
+</wxmtxy>

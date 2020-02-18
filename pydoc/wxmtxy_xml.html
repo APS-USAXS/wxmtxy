@@ -1,0 +1,250 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module wxmtxy_xml</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>wxmtxy_xml</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/oxygen18/JEMIAN/Documents/eclipse/usaxs/wxmtxy/trunk/wxmtxy_xml.py">/home/oxygen18/JEMIAN/Documents/eclipse/usaxs/wxmtxy/trunk/wxmtxy_xml.py</a></font></td></tr></table>
+    <p><tt>@note:&nbsp;support&nbsp;the&nbsp;XML&nbsp;settings&nbsp;file&nbsp;for&nbsp;the&nbsp;wxmtxy&nbsp;application<br>
+&nbsp;<br>
+This&nbsp;Python&nbsp;file&nbsp;provides&nbsp;routines&nbsp;to&nbsp;read&nbsp;and&nbsp;write&nbsp;XML&nbsp;settings<br>
+files&nbsp;for&nbsp;the&nbsp;wxmtxy&nbsp;application.&nbsp;&nbsp;An&nbsp;example&nbsp;of&nbsp;the&nbsp;XML&nbsp;file&nbsp;is&nbsp;<br>
+shown&nbsp;below.&nbsp;&nbsp;The&nbsp;routines&nbsp;manage&nbsp;the&nbsp;settings&nbsp;internally&nbsp;with&nbsp;a&nbsp;<br>
+Python&nbsp;dictionary.&nbsp;&nbsp;Interface&nbsp;routines&nbsp;are&nbsp;used&nbsp;to&nbsp;read&nbsp;and&nbsp;write&nbsp;<br>
+the&nbsp;various&nbsp;components&nbsp;of&nbsp;the&nbsp;file.&nbsp;&nbsp;*HOWEVER*,&nbsp;the&nbsp;EPICS&nbsp;configuration&nbsp;<br>
+is&nbsp;communicated&nbsp;in&nbsp;a&nbsp;Python&nbsp;dictionary.&nbsp;&nbsp;An&nbsp;example&nbsp;of&nbsp;the&nbsp;Python&nbsp;<br>
+dictionary&nbsp;with&nbsp;the&nbsp;EPICS&nbsp;configuration&nbsp;is&nbsp;shown&nbsp;below.<br>
+&nbsp;<br>
+@version:&nbsp;<br>
+###########&nbsp;SVN&nbsp;repository&nbsp;information&nbsp;###################<br>
+#&nbsp;$Date:&nbsp;2010-06-03&nbsp;16:04:15&nbsp;-0500&nbsp;(Thu,&nbsp;03&nbsp;Jun&nbsp;2010)&nbsp;$<br>
+#&nbsp;$Author:&nbsp;jemian&nbsp;$<br>
+#&nbsp;$Revision:&nbsp;184&nbsp;$<br>
+#&nbsp;$URL:&nbsp;https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/wxmtxy_xml.py&nbsp;$<br>
+#&nbsp;$Id:&nbsp;wxmtxy_xml.py&nbsp;184&nbsp;2010-06-03&nbsp;21:04:15Z&nbsp;jemian&nbsp;$<br>
+###########&nbsp;SVN&nbsp;repository&nbsp;information&nbsp;###################<br>
+&nbsp;<br>
+@note:&nbsp;for&nbsp;help&nbsp;with&nbsp;xml.dom,&nbsp;see&nbsp;<a href="http://docs.python.org/library/xml.dom.html">http://docs.python.org/library/xml.dom.html</a><br>
+&nbsp;<br>
+@note:&nbsp;Here&nbsp;is&nbsp;an&nbsp;example&nbsp;XML&nbsp;file:<br>
+&lt;?xml&nbsp;version="1.0"&nbsp;?&gt;<br>
+&lt;wxmtxy&nbsp;date="2009-04-09"&nbsp;time="10:27:00"&nbsp;version="1.0"&gt;<br>
+&nbsp;&nbsp;&lt;XYpair&nbsp;name="example"&nbsp;selected="True"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;EPICS_configuration&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;axis&nbsp;name="x"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;flag&nbsp;isMotorRec="False"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="VAL"&nbsp;pv="32idbLAX:float1"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="RBV"&nbsp;pv="32idbLAX:float2"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="DESC"&nbsp;pv="32idbLAX:string1"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="EGU"&nbsp;pv="32idbLAX:string2"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="DMOV"&nbsp;pv="32idbLAX:bit1"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="STOP"&nbsp;pv="32idbLAX:bit2"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/axis&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;axis&nbsp;name="y"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;flag&nbsp;isMotorRec="True"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;field&nbsp;name="VAL"&nbsp;pv="32idbLAX:m58:c1:m1"&nbsp;/&gt;&lt;!--&nbsp;USAXS&nbsp;a1y&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/axis&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EPICS_configuration&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tab&nbsp;name="page&nbsp;1"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;1,&nbsp;row&nbsp;0"&nbsp;x="1.0"&nbsp;y="-1.0"&nbsp;selected="True"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;1,&nbsp;row&nbsp;1"&nbsp;x="1.1"&nbsp;y="-1.1"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tab&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tab&nbsp;name="page&nbsp;2"&nbsp;selected="True"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;0"&nbsp;x="2.0"&nbsp;y="-2.0"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;1"&nbsp;x="2.1"&nbsp;y="-2.1"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;2"&nbsp;x="2.2"&nbsp;y="-2.2"&nbsp;selected="True"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;3"&nbsp;x="2.3"&nbsp;y="-2.3"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;4"&nbsp;x="2.4"&nbsp;y="-2.4"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;5"&nbsp;x="2.5"&nbsp;y="-2.5"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;row&nbsp;name="page&nbsp;2,&nbsp;row&nbsp;6"&nbsp;x="2.6"&nbsp;y="-2.6"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tab&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tab&nbsp;name="empty&nbsp;page"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tab&nbsp;name="page&nbsp;3"&gt;<br>
+&nbsp;&nbsp;&lt;/XYpair&gt;<br>
+&lt;/wxmtxy&gt;<br>
+&nbsp;<br>
+@note:&nbsp;Here&nbsp;is&nbsp;an&nbsp;example&nbsp;Python&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;EPICS&nbsp;configuration&nbsp;above:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;example_dictionary&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'x':&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'isMotorRec':&nbsp;False,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'VAL':&nbsp;'32idbLAX:float1',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'RBV':&nbsp;'32idbLAX:float2',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DESC':&nbsp;'32idbLAX:string1',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'EGU':&nbsp;'32idbLAX:string2',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'DMOV':&nbsp;'32idbLAX:bit1',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'STOP':&nbsp;'32idbLAX:bit2'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'y':&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'isMotorRec':&nbsp;True,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'VAL':&nbsp;'32idbLAX:m58:c1:m1.VAL'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+</td><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="xml.dom.minidom.html">xml.dom.minidom</a><br>
+</td><td width="25%" valign=top><a href="wxmtxy_axis.html">wxmtxy_axis</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="wxmtxy_xml.html#Settings">Settings</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Settings">class <strong>Settings</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>handle&nbsp;the&nbsp;XML&nbsp;settings&nbsp;file<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Settings-Clear"><strong>Clear</strong></a>(self)</dt><dd><tt>reset&nbsp;the&nbsp;internal&nbsp;data&nbsp;representation&nbsp;(db)&nbsp;to&nbsp;empty</tt></dd></dl>
+
+<dl><dt><a name="Settings-CountPairs"><strong>CountPairs</strong></a>(self)</dt><dd><tt>@return:&nbsp;number&nbsp;of&nbsp;pairs</tt></dd></dl>
+
+<dl><dt><a name="Settings-CountRows"><strong>CountRows</strong></a>(self, pairnum, tabnum)</dt><dd><tt>return&nbsp;the&nbsp;number&nbsp;of&nbsp;rows<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-CountTabs"><strong>CountTabs</strong></a>(self, pairnum)</dt><dd><tt>return&nbsp;the&nbsp;number&nbsp;of&nbsp;tabs<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetDb"><strong>GetDb</strong></a>(self)</dt><dd><tt>@return:&nbsp;database</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetEpicsConfig"><strong>GetEpicsConfig</strong></a>(self, pairnum)</dt><dd><tt>Get&nbsp;a&nbsp;deep&nbsp;copy&nbsp;Python&nbsp;dictionary&nbsp;of&nbsp;the&nbsp;current&nbsp;EPICS&nbsp;PV&nbsp;config.<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@return:&nbsp;the&nbsp;current&nbsp;EPICS&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetPairTitle"><strong>GetPairTitle</strong></a>(self, pairnum)</dt><dd><tt>return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetRowTitle"><strong>GetRowTitle</strong></a>(self, pairnum, tabnum, rownum)</dt><dd><tt>return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;row<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;rownum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Row&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetRowXY"><strong>GetRowXY</strong></a>(self, pairnum, tabnum, rownum)</dt><dd><tt>return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;row<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;rownum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Row&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetSelectedPair"><strong>GetSelectedPair</strong></a>(self)</dt><dd><tt>@return:&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;"selected"&nbsp;pair&nbsp;(-1&nbsp;if&nbsp;none&nbsp;selected)</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetSelectedRow"><strong>GetSelectedRow</strong></a>(self, pairnum, tabnum)</dt><dd><tt>return&nbsp;the&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;selected&nbsp;row<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetSelectedTab"><strong>GetSelectedTab</strong></a>(self, pairnum)</dt><dd><tt>return&nbsp;the&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;selected&nbsp;tab<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetSettingsFile"><strong>GetSettingsFile</strong></a>(self)</dt><dd><tt>@return:&nbsp;name&nbsp;of&nbsp;XML&nbsp;settings&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="Settings-GetTabTitle"><strong>GetTabTitle</strong></a>(self, pairnum, tabnum)</dt><dd><tt>return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;tab<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-NewEpicsConfig"><strong>NewEpicsConfig</strong></a>(self, pairnum)</dt><dd><tt>Create&nbsp;internal&nbsp;space&nbsp;for&nbsp;a&nbsp;new&nbsp;EPICS&nbsp;configuration<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-NewPair"><strong>NewPair</strong></a>(self, title<font color="#909090">=''</font>)</dt><dd><tt>create&nbsp;space&nbsp;in&nbsp;the&nbsp;database&nbsp;(db)&nbsp;for&nbsp;a&nbsp;new&nbsp;pair<br>
+and&nbsp;sets&nbsp;defaults&nbsp;for&nbsp;fields<br>
+&nbsp;<br>
+@param&nbsp;title:&nbsp;[string]&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;XY_pair&nbsp;set&nbsp;(default="")<br>
+@return:&nbsp;the&nbsp;index&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Settings-NewRow"><strong>NewRow</strong></a>(self, pairnum, tabnum, title<font color="#909090">=''</font>)</dt><dd><tt>create&nbsp;space&nbsp;in&nbsp;the&nbsp;database&nbsp;(db)&nbsp;pair&nbsp;for&nbsp;a&nbsp;new&nbsp;tab<br>
+and&nbsp;sets&nbsp;defaults&nbsp;for&nbsp;fields<br>
+&nbsp;<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;title:&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object&nbsp;(default="")<br>
+@return&nbsp;the&nbsp;index&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Settings-NewTab"><strong>NewTab</strong></a>(self, pairnum, title<font color="#909090">=''</font>)</dt><dd><tt>create&nbsp;space&nbsp;in&nbsp;the&nbsp;database&nbsp;(db)&nbsp;pair&nbsp;for&nbsp;a&nbsp;new&nbsp;tab<br>
+and&nbsp;sets&nbsp;defaults&nbsp;for&nbsp;fields<br>
+&nbsp;<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;title:&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;pair&nbsp;set&nbsp;(default="")<br>
+@return&nbsp;the&nbsp;index&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Settings-ReadXmlFile"><strong>ReadXmlFile</strong></a>(self)</dt><dd><tt>read&nbsp;the&nbsp;settings&nbsp;from&nbsp;a&nbsp;file&nbsp;into&nbsp;an&nbsp;internal&nbsp;dictionary&nbsp;(self.<strong>db</strong>)<br>
+&nbsp;<br>
+@note:&nbsp;this&nbsp;method&nbsp;uses&nbsp;xml.dom.minidom&nbsp;(built&nbsp;into&nbsp;all&nbsp;Pythons)<br>
+@see:&nbsp;<a href="http://docs.python.org/library/xml.dom.minidom.html">http://docs.python.org/library/xml.dom.minidom.html</a></tt></dd></dl>
+
+<dl><dt><a name="Settings-SaveXmlFile"><strong>SaveXmlFile</strong></a>(self)</dt><dd><tt>save&nbsp;the&nbsp;internal&nbsp;dictionary&nbsp;(self.<strong>db</strong>)&nbsp;to&nbsp;an&nbsp;XML&nbsp;file<br>
+@note:&nbsp;What&nbsp;about&nbsp;using/saving&nbsp;a&nbsp;default&nbsp;stylesheet?<br>
+@see:&nbsp;<a href="http://www.boddie.org.uk/python/XML_intro.html">http://www.boddie.org.uk/python/XML_intro.html</a></tt></dd></dl>
+
+<dl><dt><a name="Settings-SelectPair"><strong>SelectPair</strong></a>(self, pairnum)</dt><dd><tt>set&nbsp;the&nbsp;"selected"&nbsp;attribute&nbsp;of&nbsp;the&nbsp;pair<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-SelectRow"><strong>SelectRow</strong></a>(self, pairnum, tabnum, rownum)</dt><dd><tt>set&nbsp;the&nbsp;selected&nbsp;attribute&nbsp;of&nbsp;the&nbsp;pair<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;rownum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Row&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-SelectTab"><strong>SelectTab</strong></a>(self, pairnum, tabnum)</dt><dd><tt>set&nbsp;the&nbsp;selected&nbsp;attribute&nbsp;of&nbsp;the&nbsp;pair<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetEpicsConfig"><strong>SetEpicsConfig</strong></a>(self, pairnum, config)</dt><dd><tt>set&nbsp;the&nbsp;current&nbsp;EPICS&nbsp;configuration<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;config:&nbsp;Python&nbsp;dictionary&nbsp;of&nbsp;EPICS&nbsp;PV&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetEpicsField"><strong>SetEpicsField</strong></a>(self, pairnum, axis, field, value)</dt><dd><tt>Define&nbsp;the&nbsp;EPICS&nbsp;config&nbsp;for&nbsp;a&nbsp;specific&nbsp;field<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair'<br>
+@param&nbsp;axis:&nbsp;[string]&nbsp;"x"&nbsp;or&nbsp;"y"'<br>
+@param&nbsp;field:&nbsp;[string]&nbsp;member&nbsp;of&nbsp;wxmtxy_axis.field_list'<br>
+@param&nbsp;value:&nbsp;[string]&nbsp;value&nbsp;of&nbsp;this&nbsp;field</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetPairTitle"><strong>SetPairTitle</strong></a>(self, pairnum, title)</dt><dd><tt>set&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair'<br>
+@param&nbsp;title:&nbsp;[string]&nbsp;name&nbsp;of&nbsp;the&nbsp;XY_pair</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetRowTitle"><strong>SetRowTitle</strong></a>(self, pairnum, tabnum, rownum, title)</dt><dd><tt>set&nbsp;the&nbsp;name&nbsp;attribute&nbsp;of&nbsp;the&nbsp;row<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;rownum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Row&nbsp;object<br>
+@param&nbsp;title:&nbsp;[string]&nbsp;title&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetRowXY"><strong>SetRowXY</strong></a>(self, pairnum, tabnum, rownum, x, y)</dt><dd><tt>set&nbsp;the&nbsp;name&nbsp;attribute&nbsp;of&nbsp;the&nbsp;row<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;x:&nbsp;[float]&nbsp;X&nbsp;axis&nbsp;position<br>
+@param&nbsp;y:&nbsp;[float]&nbsp;Y&nbsp;axis&nbsp;position</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetSettingsFile"><strong>SetSettingsFile</strong></a>(self, thefile)</dt><dd><tt>set&nbsp;the&nbsp;name&nbsp;of&nbsp;XML&nbsp;settings&nbsp;file<br>
+@param&nbsp;thefile:&nbsp;[string]&nbsp;name&nbsp;of&nbsp;XML&nbsp;file&nbsp;with&nbsp;settings</tt></dd></dl>
+
+<dl><dt><a name="Settings-SetTabTitle"><strong>SetTabTitle</strong></a>(self, pairnum, tabnum, title)</dt><dd><tt>set&nbsp;the&nbsp;name&nbsp;attribute&nbsp;of&nbsp;the&nbsp;tab<br>
+@param&nbsp;pairnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;XY_pair<br>
+@param&nbsp;tabnum:&nbsp;[int]&nbsp;index&nbsp;number&nbsp;of&nbsp;the&nbsp;Tab&nbsp;object<br>
+@param&nbsp;title:&nbsp;[string]&nbsp;title&nbsp;the&nbsp;Tab&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="Settings-__init__"><strong>__init__</strong></a>(self, settingsFile<font color="#909090">=None</font>)</dt><dd><tt>prepare&nbsp;the&nbsp;settings&nbsp;file<br>
+@param&nbsp;settingsFile:&nbsp;[string]&nbsp;name&nbsp;of&nbsp;XML&nbsp;file&nbsp;with&nbsp;settings</tt></dd></dl>
+
+<dl><dt><a name="Settings-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>default&nbsp;representation&nbsp;of&nbsp;this&nbsp;structure&nbsp;is&nbsp;XML<br>
+@return:&nbsp;XML&nbsp;representation&nbsp;of&nbsp;internal&nbsp;database&nbsp;(db)<br>
+@note:&nbsp;What&nbsp;about&nbsp;a&nbsp;default&nbsp;stylesheet?</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

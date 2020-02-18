@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/xsl" href="wxmtxy_settings.xsl" ?>
+
+<!--
+########### SVN repository information ###################
+# $Date: 2009-05-23 09:53:17 -0500 (Sat, 23 May 2009) $
+# $Author: jemian $
+# $Revision: 56 $
+# $URL: https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/examples/USAXS_XY.xml $
+# $Id: USAXS_XY.xml 56 2009-05-23 14:53:17Z jemian $
+########### SVN repository information ###################
+-->
+
+<wxmtxy date="2009-04-12" time="17:04:29" version="1.0">
+  <XYpair name="sample" selected="True">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c2:m2"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c2:m1"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="2009-04-09" selected="True">
+      <row name="EBrite Sample " x="-2.005" y="14.115"/>
+      <row name="J5 Ni Sample" x="-3.0" y="41.4"/>
+      <row name="TEM grid" x="-1.4" y="-9.6"/>
+      <row name="Sample out" x="-2" y="64."/>
+      <row name="chondrite scan 160" x="-2.0" y="114.0"/>
+      <row name="chondrite scan 165" x="-2.0" y="115.0"/>
+      <row name="chondrite scan 170" x="-2.0" y="113.0"/>
+      <row name="" x="" y=""/>
+      <row/>	<!-- rows can be empty -->
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row name="" x="" y=""/> <!-- entries can be empty -->
+      <row name="" x="" y=""/>
+      <row name="" x="" y=""/>
+    </tab>
+  </XYpair>
+  <XYpair name="detector">
+    <EPICS_configuration>
+      <axis name="y">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c2:m5"/>
+      </axis>
+      <axis name="x">
+        <flag isMotorRec="True"/>
+        <field name="VAL" pv="32idbLAX:m58:c2:m4"/>
+      </axis>
+    </EPICS_configuration>
+    <tab name="CCD camera">
+      <row name="page 2, row 0" x="2.0" y="-2.0"/>
+      <row name="page 2, row 1" x="2.1" y="-2.1"/>
+      <row name="page 2, row 2" x="2.2" y="-2.2"/>
+      <row name="page 2, row 3" x="2.3" y="-2.3"/>
+      <row name="page 2, row 4" x="2.4" y="-2.4"/>
+      <row name="page 2, row 5" x="2.5" y="-2.5"/>
+      <row name="page 2, row 6" x="2.6" y="-2.6"/>
+    </tab>
+    <tab name=".detectorXYrc" selected="True">
+      <row name="Phot. CCD direct beam" x="0.0" y="0.0"/>
+      <row name="Phot CCD M 4 " x="0" y="24.2"/>
+      <row name="Phot CCD A 4 " x="0.0" y="47.5"/>
+      <row name="CCD" x="12.1" y="50.8"/>
+      <row name="Diode M beam " x="-6.47875" y="90.659"/>
+      <row name="Diode A beam " x="-6.47875" y="118.659"/>
+      <row name="Diode A SBUSAXS" x="19.3863" y="116.445"/>
+      <row name="Diode" x="6.07375" y="120.81"/>
+      <row name="17keV CCD M4" x="x0.125" y="22.55"/>
+      <row name="17keV PD A4" x="x-6.16125" y="109.762"/>
+      <row name="" x="" y=""/>
+      <row name="MS beam 16.84keV CCD" x="12.25" y="25"/>
+      <row name="MS beam 10.7keV CCD" x="12.7" y="22.2"/>
+      <row name="AS beam 10.7keV CCD" x="25.0" y="22.2"/>
+      <row name="AS beam 16.84keV CCD" x="12.25" y="44.9"/>
+      <row name="SBUSAXS CCD " x="25.75" y="48.87"/>
+      <row name="" x="" y=""/>
+      <row name="" x="" y=""/>
+      <row name="2009-03-22,03:59:30 PM" x="6.07375" y="120.81"/>
+      <row name="" x="" y=""/>
+    </tab>
+  </XYpair>
+</wxmtxy>

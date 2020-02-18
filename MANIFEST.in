@@ -1,0 +1,9 @@
+include LICENSE
+include graphics/*.bmp
+include graphics/*.gif
+include graphics/*.png
+include graphics/*.vsd
+include examples/*.xml
+include examples/*.xsl
+include examples/*.txt
+include *.html

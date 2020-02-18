@@ -1,0 +1,215 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pvConnect</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pvConnect</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/oxygen18/JEMIAN/Documents/eclipse/usaxs/wxmtxy/trunk/pvConnect.py">/home/oxygen18/JEMIAN/Documents/eclipse/usaxs/wxmtxy/trunk/pvConnect.py</a></font></td></tr></table>
+    <p><tt>simplified&nbsp;connections&nbsp;to&nbsp;an&nbsp;EPICS&nbsp;PV&nbsp;using&nbsp;CaChannel<br>
+&nbsp;<br>
+Provides&nbsp;these&nbsp;classes:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#CaPollWx">CaPollWx</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;in&nbsp;WX-based&nbsp;GUIs&nbsp;to&nbsp;call&nbsp;ca.poll()&nbsp;in&nbsp;the&nbsp;background<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;interval_s:&nbsp;[float]&nbsp;interval&nbsp;between&nbsp;calls&nbsp;to&nbsp;ca.poll()<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#EpicsPv">EpicsPv</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manage&nbsp;a&nbsp;CaChannel&nbsp;connection&nbsp;with&nbsp;an&nbsp;EPICS&nbsp;PV<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;name:&nbsp;[string]&nbsp;EPICS&nbsp;PV&nbsp;to&nbsp;connect<br>
+&nbsp;<br>
+Provides&nbsp;these&nbsp;utility&nbsp;routines:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-on_exit">on_exit</a>(timer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit&nbsp;handler&nbsp;to&nbsp;stop&nbsp;the&nbsp;ca.poll()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;timer:&nbsp;<a href="#CaPollWx">CaPollWx</a>&nbsp;object<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-CaPoll">CaPoll</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;in&nbsp;non-GUI&nbsp;scripts&nbsp;to&nbsp;call&nbsp;ca.poll()&nbsp;in&nbsp;the&nbsp;background<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-GetRTYP">GetRTYP</a>(pv)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns&nbsp;the&nbsp;record&nbsp;type&nbsp;of&nbsp;"pv"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;pv:[string]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return:&nbsp;[string]&nbsp;EPICS&nbsp;record&nbsp;type&nbsp;or&nbsp;None&nbsp;if&nbsp;cannot&nbsp;connect<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-testConnect">testConnect</a>(pv)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tests&nbsp;if&nbsp;a&nbsp;CaChannel&nbsp;connection&nbsp;can&nbsp;be&nbsp;established&nbsp;to&nbsp;"pv"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;pv:[string]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@return:&nbsp;True&nbsp;if&nbsp;can&nbsp;connect,&nbsp;otherwise&nbsp;False<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-receiver">receiver</a>(value)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example&nbsp;response&nbsp;to&nbsp;an&nbsp;EPICS&nbsp;monitor&nbsp;on&nbsp;the&nbsp;channel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;value:&nbsp;str(epics_args['pv_value'])<br>
+&nbsp;<br>
+@version:&nbsp;<br>
+###########&nbsp;SVN&nbsp;repository&nbsp;information&nbsp;###################<br>
+#&nbsp;$Date:&nbsp;2010-06-03&nbsp;16:04:15&nbsp;-0500&nbsp;(Thu,&nbsp;03&nbsp;Jun&nbsp;2010)&nbsp;$<br>
+#&nbsp;$Author:&nbsp;jemian&nbsp;$<br>
+#&nbsp;$Revision:&nbsp;184&nbsp;$<br>
+#&nbsp;$URL:&nbsp;https://subversion.xor.aps.anl.gov/bcdaext/wxmtxy/trunk/pvConnect.py&nbsp;$<br>
+#&nbsp;$Id:&nbsp;pvConnect.py&nbsp;184&nbsp;2010-06-03&nbsp;21:04:15Z&nbsp;jemian&nbsp;$<br>
+###########&nbsp;SVN&nbsp;repository&nbsp;information&nbsp;###################</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="CaChannel.html">CaChannel</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="wx.html">wx</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="pvConnect.html#CaPollWx">CaPollWx</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pvConnect.html#EpicsPv">EpicsPv</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CaPollWx">class <strong>CaPollWx</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Use&nbsp;in&nbsp;WX-based&nbsp;GUIs&nbsp;to&nbsp;call&nbsp;ca.<a href="#CaPollWx-poll">poll</a>()&nbsp;in&nbsp;the&nbsp;background<br>
+&nbsp;<br>
+Set&nbsp;up&nbsp;a&nbsp;separate&nbsp;thread&nbsp;to&nbsp;trigger&nbsp;periodic&nbsp;calls&nbsp;to&nbsp;the&nbsp;<br>
+EPICS&nbsp;CaChannel.ca.<a href="#CaPollWx-poll">poll</a>()&nbsp;connection.&nbsp;&nbsp;Awaiting&nbsp;(a.k.a.,&nbsp;<br>
+outstanding&nbsp;or&nbsp;pending)&nbsp;channel&nbsp;access&nbsp;background&nbsp;<br>
+activity&nbsp;executes&nbsp;during&nbsp;the&nbsp;poll.&nbsp;&nbsp;Calls&nbsp;pend_event()&nbsp;<br>
+with&nbsp;a&nbsp;timeout&nbsp;short&nbsp;enough&nbsp;to&nbsp;poll.&nbsp;&nbsp;<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;polling&nbsp;interval&nbsp;is&nbsp;0.1&nbsp;second.<br>
+&nbsp;<br>
+@note:&nbsp;The&nbsp;code&nbsp;will&nbsp;silently&nbsp;do&nbsp;nothing&nbsp;if&nbsp;wx&nbsp;was&nbsp;not&nbsp;imported.<br>
+This&nbsp;routine&nbsp;use&nbsp;the&nbsp;wx.PyTimer()&nbsp;to&nbsp;call&nbsp;ca.<a href="#CaPollWx-poll">poll</a>()&nbsp;frequently&nbsp;<br>
+during&nbsp;the&nbsp;main&nbsp;WX&nbsp;event&nbsp;loop.<br>
+&nbsp;<br>
+@warning:&nbsp;Only&nbsp;use&nbsp;this&nbsp;in&nbsp;a&nbsp;routine&nbsp;that&nbsp;has&nbsp;already&nbsp;called&nbsp;<br>
+wx.App()&nbsp;or&nbsp;an&nbsp;exception&nbsp;will&nbsp;occur.&nbsp;&nbsp;<br>
+Command&nbsp;line&nbsp;code&nbsp;will&nbsp;need&nbsp;to&nbsp;call&nbsp;ca.<a href="#CaPollWx-poll">poll</a>()&nbsp;using&nbsp;a&nbsp;different&nbsp;<br>
+method&nbsp;(such&nbsp;as&nbsp;<a href="#-CaPoll">CaPoll</a>()&nbsp;below).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CaPollWx-GetInterval"><strong>GetInterval</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;interval&nbsp;between&nbsp;calls&nbsp;to&nbsp;CaChannel.ca.<a href="#CaPollWx-poll">poll</a>()</tt></dd></dl>
+
+<dl><dt><a name="CaPollWx-SetInterval"><strong>SetInterval</strong></a>(self, interval_s)</dt><dd><tt>set&nbsp;the&nbsp;next&nbsp;interval&nbsp;between&nbsp;calls&nbsp;to&nbsp;CaChannel.ca.<a href="#CaPollWx-poll">poll</a>()</tt></dd></dl>
+
+<dl><dt><a name="CaPollWx-__init__"><strong>__init__</strong></a>(self, interval_s<font color="#909090">=0.10000000000000001</font>)</dt><dd><tt>@param&nbsp;interval_s:&nbsp;[float]&nbsp;interval&nbsp;between&nbsp;calls&nbsp;to&nbsp;ca.<a href="#CaPollWx-poll">poll</a>()</tt></dd></dl>
+
+<dl><dt><a name="CaPollWx-poll"><strong>poll</strong></a>(self)</dt><dd><tt>Poll&nbsp;for&nbsp;changes&nbsp;in&nbsp;Channel</tt></dd></dl>
+
+<dl><dt><a name="CaPollWx-start"><strong>start</strong></a>(self)</dt><dd><tt>start&nbsp;polling</tt></dd></dl>
+
+<dl><dt><a name="CaPollWx-stop"><strong>stop</strong></a>(self)</dt><dd><tt>stop&nbsp;polling</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EpicsPv">class <strong>EpicsPv</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>manage&nbsp;a&nbsp;connection&nbsp;with&nbsp;an&nbsp;EPICS&nbsp;PV<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="EpicsPv-GetChan"><strong>GetChan</strong></a>(self)</dt><dd><tt>@return:&nbsp;CaChannel&nbsp;channel</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-GetEpicsArgs"><strong>GetEpicsArgs</strong></a>(self)</dt><dd><tt>@return:&nbsp;epics_args&nbsp;from&nbsp;the&nbsp;most&nbsp;recent&nbsp;monitor&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-GetPv"><strong>GetPv</strong></a>(self)</dt><dd><tt>@return:&nbsp;PV&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-GetUserArgs"><strong>GetUserArgs</strong></a>(self)</dt><dd><tt>@return:&nbsp;user_args&nbsp;from&nbsp;the&nbsp;most&nbsp;recent&nbsp;monitor&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-GetUserCallback"><strong>GetUserCallback</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;callback&nbsp;function&nbsp;supplied&nbsp;by&nbsp;the&nbsp;caller<br>
+values&nbsp;will&nbsp;be&nbsp;set&nbsp;by&nbsp;user_callback(value)<br>
+@return:&nbsp;function&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-GetValue"><strong>GetValue</strong></a>(self)</dt><dd><tt>@return:&nbsp;value&nbsp;from&nbsp;EPICS&nbsp;from&nbsp;the&nbsp;most&nbsp;recent&nbsp;monitor&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-SetMask"><strong>SetMask</strong></a>(self, mask)</dt><dd><tt>Define&nbsp;the&nbsp;mask&nbsp;used&nbsp;when&nbsp;applying&nbsp;a&nbsp;channel&nbsp;monitor.<br>
+The&nbsp;default&nbsp;is:&nbsp;self.<strong>mask</strong>&nbsp;=&nbsp;CaChannel.ca.DBE_VALUE<br>
+@param&nbsp;mask:&nbsp;as&nbsp;defined&nbsp;in&nbsp;the&nbsp;CaChannel&nbsp;manual</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-SetPv"><strong>SetPv</strong></a>(self, name)</dt><dd><tt>redefine&nbsp;the&nbsp;PV&nbsp;name&nbsp;only&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;connection<br>
+@param&nbsp;name:&nbsp;valid&nbsp;EPICS&nbsp;PV&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-SetUserArgs"><strong>SetUserArgs</strong></a>(self, user_args)</dt><dd><tt>define&nbsp;the&nbsp;user_args&nbsp;tuple&nbsp;to&nbsp;use&nbsp;when&nbsp;monitoring<br>
+@param&nbsp;user_args:&nbsp;tuple&nbsp;of&nbsp;user&nbsp;data&nbsp;(for&nbsp;use&nbsp;in&nbsp;user_callback&nbsp;function)</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-SetUserCallback"><strong>SetUserCallback</strong></a>(self, user_callback)</dt><dd><tt>Set&nbsp;the&nbsp;callback&nbsp;function&nbsp;supplied&nbsp;by&nbsp;the&nbsp;caller<br>
+values&nbsp;will&nbsp;be&nbsp;set&nbsp;by&nbsp;user_callback(value)<br>
+@param&nbsp;user_callback:&nbsp;function&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-__init__"><strong>__init__</strong></a>(self, name)</dt><dd><tt>initialize&nbsp;the&nbsp;class&nbsp;and&nbsp;set&nbsp;default&nbsp;values<br>
+@param&nbsp;name:&nbsp;[string]&nbsp;EPICS&nbsp;PV&nbsp;to&nbsp;connect</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-callback"><strong>callback</strong></a>(self, epics_args, user_args)</dt><dd><tt>receive&nbsp;an&nbsp;EPICS&nbsp;callback,&nbsp;copy&nbsp;epics_args&nbsp;and&nbsp;user_args,&nbsp;then&nbsp;call&nbsp;user</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-connect"><strong>connect</strong></a>(self)</dt><dd><tt>initiate&nbsp;the&nbsp;connection&nbsp;with&nbsp;EPICS</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-connectw"><strong>connectw</strong></a>(self)</dt><dd><tt>initiate&nbsp;the&nbsp;connection&nbsp;with&nbsp;EPICS,&nbsp;standard&nbsp;wait&nbsp;for&nbsp;the&nbsp;connection</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-monitor"><strong>monitor</strong></a>(self)</dt><dd><tt>Initiate&nbsp;a&nbsp;monitor&nbsp;on&nbsp;the&nbsp;EPICS&nbsp;channel,&nbsp;delivering&nbsp;the&nbsp;<br>
+CaChannel&nbsp;callback&nbsp;to&nbsp;the&nbsp;supplied&nbsp;function.<br>
+&nbsp;<br>
+@note:&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ch&nbsp;=&nbsp;<a href="#EpicsPv">EpicsPv</a>(test_pv)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ch.<a href="#EpicsPv-connectw">connectw</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;uargs&nbsp;=&nbsp;test_pv,&nbsp;widget.SetLabel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ch.<a href="#EpicsPv-SetUserArgs">SetUserArgs</a>(uargs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ch.<a href="#EpicsPv-SetUserCallback">SetUserCallback</a>(myCallback)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ch.<a href="#EpicsPv-monitor">monitor</a>()<br>
+&nbsp;<br>
+@warning:&nbsp;At&nbsp;this&nbsp;time,&nbsp;there&nbsp;is&nbsp;not&nbsp;an&nbsp;easy&nbsp;way&nbsp;to&nbsp;turn&nbsp;off&nbsp;monitors.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Instead,&nbsp;ch.<a href="#EpicsPv-release">release</a>()&nbsp;the&nbsp;channel&nbsp;(which&nbsp;will&nbsp;set&nbsp;self.<strong>chan</strong>&nbsp;=&nbsp;None),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;re-start&nbsp;a&nbsp;monitor&nbsp;after&nbsp;a&nbsp;ch.<a href="#EpicsPv-release">release</a>(),&nbsp;connect&nbsp;as&nbsp;usual&nbsp;and&nbsp;start<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;monitor&nbsp;again,&nbsp;as&nbsp;the&nbsp;first&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="EpicsPv-release"><strong>release</strong></a>(self)</dt><dd><tt>release&nbsp;the&nbsp;connection&nbsp;with&nbsp;EPICS<br>
+@note:&nbsp;Release&nbsp;ALL&nbsp;channels&nbsp;before&nbsp;calling&nbsp;<a href="#-on_exit">on_exit</a>()</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CaPoll"><strong>CaPoll</strong></a>()</dt><dd><tt>Use&nbsp;in&nbsp;non-GUI&nbsp;scripts&nbsp;to&nbsp;call&nbsp;ca.poll()&nbsp;in&nbsp;the&nbsp;background</tt></dd></dl>
+ <dl><dt><a name="-GetRTYP"><strong>GetRTYP</strong></a>(pv)</dt><dd><tt>Returns&nbsp;the&nbsp;record&nbsp;type&nbsp;of&nbsp;"pv"<br>
+@param&nbsp;pv:[string]<br>
+@return:&nbsp;[string]&nbsp;EPICS&nbsp;record&nbsp;type&nbsp;or&nbsp;None&nbsp;if&nbsp;cannot&nbsp;connect</tt></dd></dl>
+ <dl><dt><a name="-on_exit"><strong>on_exit</strong></a>(timer<font color="#909090">=None</font>)</dt><dd><tt>Exit&nbsp;handler&nbsp;to&nbsp;stop&nbsp;the&nbsp;ca.poll()<br>
+@param&nbsp;timer:&nbsp;<a href="#CaPollWx">CaPollWx</a>&nbsp;object<br>
+&nbsp;<br>
+Call&nbsp;this&nbsp;to&nbsp;cleanup&nbsp;when&nbsp;program&nbsp;is&nbsp;exiting.<br>
+ONLY&nbsp;call&nbsp;this&nbsp;function&nbsp;during&nbsp;a&nbsp;program's&nbsp;exit&nbsp;handling.<br>
+If&nbsp;ca.task_exit()&nbsp;is&nbsp;not&nbsp;called,&nbsp;then&nbsp;expect&nbsp;to&nbsp;see&nbsp;the&nbsp;errors:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FATAL:&nbsp;exception&nbsp;not&nbsp;rethrown<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Abort</tt></dd></dl>
+ <dl><dt><a name="-receiver"><strong>receiver</strong></a>(epics_args, user_args)</dt><dd><tt>Example&nbsp;response&nbsp;to&nbsp;an&nbsp;EPICS&nbsp;monitor&nbsp;on&nbsp;the&nbsp;channel<br>
+@param&nbsp;value:&nbsp;str(epics_args['pv_value'])</tt></dd></dl>
+ <dl><dt><a name="-testConnect"><strong>testConnect</strong></a>(pv)</dt><dd><tt>Tests&nbsp;if&nbsp;a&nbsp;CaChannel&nbsp;connection&nbsp;can&nbsp;be&nbsp;established&nbsp;to&nbsp;"pv"<br>
+@param&nbsp;pv:[string]<br>
+@return:&nbsp;True&nbsp;if&nbsp;can&nbsp;connect,&nbsp;otherwise&nbsp;False</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>IMPORTED_CACHANNEL</strong> = True<br>
+<strong>IMPORTED_WX</strong> = True</td></tr></table>
+</body></html>
